@@ -6,14 +6,33 @@
  * @flow strict-local
  */
  import React, { useState } from "react";
- import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+ import { StyleSheet, TouchableOpacity } from "react-native";
+ import {TextInput,View,Text,Button} from 'react-native' 
  
  const FlexDirectionBasics = () => {
-   const [flexDirection, setflexDirection] = useState("column");
- 
+    const [flexDirection, setflexDirection] = useState("column");
+    const[fname,setfName] = useState('');
+    const[lname,setlName] = useState('');
    return (
-    <View style={{ flex:1, flexDirection: "column" }}>
-      <View style={{ flex:1, flexDirection: "row" }}>
+    <View style={{ padding:10 }}>
+      <TextInput
+        styles={{height:40,borderColor:"#00000",borderWidth:1.5}}
+        placeholder="Type Here to set first name"
+        keyboardType="default"
+        onChangeText={text => setfName(text)}
+      />
+      <TextInput
+        styles={{height:40,borderColor:"#00000",borderWidth:1.5}}
+        placeholder="Type Here to set last name"
+        keyboardType="default"
+        onChangeText={text => setlName(text)}
+      />
+      <Text>Name :{fname}  {lname}</Text>
+      <Button title="Click me!!" onPress={() => {alert(fname+"  "+lname)}}/>
+
+
+
+      {/* <View style={{ flex:1, flexDirection: "row" }}>
         <View style={{ flex:1,backgroundColor: "purple", flexDirection:"row"}}>
 
           <View style={{ height:50,width:50, backgroundColor: "black" }}></View>
@@ -34,7 +53,7 @@
             <View style={{ height:50,width:50, backgroundColor: "black"}}></View>
           </View>
         </View>
-      </View>
+      </View> */}
     </View>
    );
  };
